@@ -1,0 +1,21 @@
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import PageTransition from "@/Components/Global/PageTransition";
+
+export default function Template({ children }: { children: React.ReactNode }) {
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div key="page-curtain">
+        <PageTransition />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+        >
+          {children}
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
