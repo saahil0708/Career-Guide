@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "67uzoom719.ufs.sh",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "image.lexica.art",
+      },
     ],
   },
 };
