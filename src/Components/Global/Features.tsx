@@ -60,14 +60,14 @@ const Features = () => {
         <section className="py-12 bg-gray-50 relative overflow-hidden">
             {/* Top Divider Line */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-            
+
             {/* Background Accents */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-50/50 rounded-full blur-[120px] -mr-64 -mt-64" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-50/30 rounded-full blur-[120px] -ml-64 -mb-64" />
 
             <div className="max-w-[1450px] mx-auto px-4 lg:px-8 relative z-10">
                 <div className="mb-20">
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -76,7 +76,7 @@ const Features = () => {
                     >
                         Our Expertise
                     </motion.p>
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}

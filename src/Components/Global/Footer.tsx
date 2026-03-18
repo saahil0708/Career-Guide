@@ -15,22 +15,22 @@ const Footer = () => {
 
             <div className="max-w-7xl mx-auto w-full flex flex-col items-center relative z-10">
                 {/* Large Centered Logo */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     className="relative w-64 h-24 lg:w-80 lg:h-32 mb-8"
                 >
-                    <Image 
-                        src="https://67uzoom719.ufs.sh/f/YNNjoMX3eGAoXRiCpT7zN8RPF5aknr7V4H2CZEIYudsjGSpO" 
-                        alt="Educareer Logo" 
+                    <Image
+                        src="https://67uzoom719.ufs.sh/f/YNNjoMX3eGAoXRiCpT7zN8RPF5aknr7V4H2CZEIYudsjGSpO"
+                        alt="Educareer Logo"
                         fill
                         className="object-contain brightness-0 invert"
                     />
                 </motion.div>
 
                 {/* Newsletter Subscription */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -40,9 +40,9 @@ const Footer = () => {
                     <div className="flex flex-col items-center gap-4">
                         <p className="text-white/80 text-[10px] font-black uppercase tracking-[0.3em]">Subscribe to our Newsletter</p>
                         <form className="flex w-full gap-2 p-1.5 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
-                            <input 
-                                type="email" 
-                                placeholder="name@email.com" 
+                            <input
+                                type="email"
+                                placeholder="name@email.com"
                                 className="flex-grow bg-transparent px-4 py-2 text-sm text-white placeholder:text-white/40 border-none focus:ring-0 focus:outline-none"
                             />
                             <button className="bg-white text-[#da2929] px-6 py-2 rounded-md cursor-pointer text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition-all duration-300">
@@ -55,13 +55,13 @@ const Footer = () => {
                 {/* Minimal Links */}
                 <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12 mb-12">
                     {['Home', 'About Us', 'Gallery', "Students' Corner", 'Contact'].map((item) => (
-                        <Link 
-                            key={item} 
-                            href="/" 
+                        <Link
+                            key={item}
+                            href="/"
                             className="text-white/80 hover:text-white font-bold tracking-widest uppercase text-xs transition-all duration-300"
                         >
                             {item}
-                        </Link> 
+                        </Link>
                     ))}
                 </div>
 

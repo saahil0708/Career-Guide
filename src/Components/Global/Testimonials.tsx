@@ -107,7 +107,7 @@ const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any,
                     </div>
                 </div>
             </div>
-            
+
             {/* Glossy Overlay */}
             <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         </motion.div>
@@ -129,8 +129,8 @@ const Testimonials = () => {
             {/* Kinetic Background Elements */}
             <div className="absolute inset-0 pointer-events-none select-none z-0">
                 {/* Primary Background Text (Upper Row) */}
-                <motion.div 
-                    style={{ x: x1 }} 
+                <motion.div
+                    style={{ x: x1 }}
                     className="absolute top-[10%] left-0 whitespace-nowrap opacity-[0.035]"
                 >
                     <h3 className="text-[18vw] font-black leading-none tracking-tighter text-[#da2929]">
@@ -139,8 +139,8 @@ const Testimonials = () => {
                 </motion.div>
 
                 {/* Secondary Background Text (Lower Row) */}
-                <motion.div 
-                    style={{ x: x2 }} 
+                <motion.div
+                    style={{ x: x2 }}
                     className="absolute top-[45%] left-0 whitespace-nowrap opacity-[0.045]"
                 >
                     <h3 className="text-[18vw] font-black leading-none tracking-tighter text-gray-900">
@@ -150,7 +150,7 @@ const Testimonials = () => {
             </div>
 
             <div className="max-w-[1450px] mx-auto px-4 lg:px-8 relative z-10 mb-20 text-center">
-                <motion.p 
+                <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -158,7 +158,7 @@ const Testimonials = () => {
                 >
                     Voices of Excellence
                 </motion.p>
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -172,12 +172,12 @@ const Testimonials = () => {
             <div className="flex flex-col gap-8 relative z-10">
                 {/* Single Row of Testimonials */}
                 <div className="flex overflow-hidden group">
-                    <motion.div 
+                    <motion.div
                         animate={{ x: [0, -2000] }}
-                        transition={{ 
-                            duration: 60, 
-                            repeat: Infinity, 
-                            ease: "linear" 
+                        transition={{
+                            duration: 60,
+                            repeat: Infinity,
+                            ease: "linear"
                         }}
                         className="flex gap-8 px-4"
                     >
@@ -190,7 +190,7 @@ const Testimonials = () => {
 
             {/* Achievement orbs (Subtle accent) */}
             <motion.div
-                animate={{ 
+                animate={{
                     y: [0, -20, 0],
                 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
