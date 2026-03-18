@@ -41,9 +41,9 @@ export default function RootLayout({
         <CustomCursor />
         <ReadingProgress />
         <SmoothScroll>
-          <div className="relative z-10 bg-white mb-[500px] md:mb-[450px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col min-h-screen rounded-b-[90px] overflow-hidden transition-all duration-300">
+          <div className="relative z-10 bg-white mb-[700px] md:mb-[500px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col min-h-screen rounded-b-[60px] md:rounded-b-[90px] overflow-hidden transition-all duration-300">
             <Navbar />
-            <main className="flex-grow pt-[88px]">
+            <main className="flex-grow pt-20 md:pt-[88px]">
               {children}
             </main>
           </div>

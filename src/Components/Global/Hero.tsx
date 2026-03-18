@@ -13,11 +13,11 @@ const Hero = () => {
         <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-gradient-to-tl from-gray-50 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10 w-full mb-10">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10 w-full mb-10 pt-20 lg:pt-0">
         {/* Left Content */}
-        <div className="space-y-6 lg:space-y-10">
+        <div className="space-y-8 lg:space-y-10 text-center lg:text-left">
           <motion.h1
-            className="text-5xl lg:text-[72px] font-black text-gray-900 leading-tight whitespace-nowrap"
+            className="text-4xl sm:text-5xl lg:text-[72px] font-black text-gray-900 leading-[1.1] tracking-tight whitespace-normal md:whitespace-nowrap"
           >
             <SplitText text="Shape Your" delay={0.2} />{" "}
             <SplitText text="Future" className="text-[#da2929]" delay={0.5} />
@@ -27,13 +27,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-gray-600 text-lg lg:text-xl max-w-xl leading-relaxed font-medium"
+            className="text-gray-600 text-lg lg:text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium"
           >
             Unlock your potential with <span className="text-[#da2929] font-bold italic">expert career guidance</span> and personalized mentorship. We bridge the gap between academic knowledge and professional excellence.
           </motion.p>
 
           {/* Features List */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 pt-4 max-w-2xl mx-auto lg:mx-0 text-left">
             {[
               { title: "Personalized Counseling", desc: "Expert 1-on-1 sessions" },
               { title: "Skill Assessment", desc: "Map your unique strengths" },
@@ -64,7 +64,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.2, duration: 1 }}
-            className="flex gap-x-20 lg:gap-x-36 pt-10 border-t border-gray-100"
+            className="flex justify-center lg:justify-start gap-x-12 md:gap-x-20 lg:gap-x-32 pt-10 border-t border-gray-100"
           >
             <div>
               <p className="text-4xl lg:text-5xl font-black text-gray-900 tracking-tighter">5k+</p>
@@ -86,7 +86,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.85, x: 50, y: 20 }}
           animate={{ opacity: 1, scale: 1.1, x: 0, y: -20 }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.5 }}
-          className="relative flex items-center justify-center lg:justify-end"
+          className="relative flex items-center justify-center lg:justify-end hidden sm:flex"
         >
           <div className="relative w-full max-w-[650px] aspect-square">
             <Image

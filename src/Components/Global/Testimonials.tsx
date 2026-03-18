@@ -80,7 +80,7 @@ const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any,
             style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="group relative flex-shrink-0 w-[450px] bg-white p-8 rounded-[40px] border border-gray-100 shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(218,41,41,0.08)] transition-shadow duration-500"
+            className="group relative flex-shrink-0 w-[85vw] sm:w-[450px] bg-white p-8 rounded-[40px] border border-gray-100 shadow-[0_20px_40px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(218,41,41,0.08)] transition-shadow duration-500"
         >
             <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
                 <div className="flex items-center justify-between mb-6">
