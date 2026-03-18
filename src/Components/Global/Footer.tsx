@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
     return (
-        <footer className="fixed bottom-0 left-0 w-full min-h-[500px] md:min-h-[550px] py-16 md:py-20 -z-10 bg-[#da2929] text-white flex flex-col items-center justify-center px-4 overflow-hidden">
+        <footer className="fixed bottom-0 left-0 w-full min-h-[500px] md:min-h-[500px] py-16 md:py-20 -z-10 bg-[#da2929] text-white flex flex-col items-center justify-center px-4 overflow-hidden">
             {/* Background Decor Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white rounded-full blur-[120px]" />
@@ -19,7 +19,7 @@ const Footer = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="relative w-64 h-24 lg:w-80 lg:h-32 mb-3"
+                    className="relative w-64 h-24 lg:w-80 lg:h-32 mb-4"
                 >
                     <Image
                         src="https://67uzoom719.ufs.sh/f/YNNjoMX3eGAoXRiCpT7zN8RPF5aknr7V4H2CZEIYudsjGSpO"
