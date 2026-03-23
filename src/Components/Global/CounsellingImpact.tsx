@@ -1,17 +1,17 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
 const Counter = ({ value, duration = 2 }: { value: string, duration?: number }) => {
     const numericPartMatch = value.match(/[\d,.]+/);
     const numericPart = numericPartMatch ? numericPartMatch[0] : "0";
     const numericValue = parseInt(numericPart.replace(/,/g, ''));
-    
+
     const parts = value.split(numericPart);
     const prefix = parts[0] || "";
     const suffix = parts.slice(1).join(numericPart) || "";
-    
+
     const count = useMotionValue(0);
     const rounded = useTransform(count, (latest) => Math.round(latest).toLocaleString());
     const ref = useRef(null);
@@ -76,7 +76,7 @@ const impacts = [
     }
 ];
 
-const CounsellingImpact = () => {
+const CounsellingImpact = memo(() => {
     return (
         <section className="py-24 bg-gray-50 relative overflow-hidden">
             {/* Background Decoration */}
@@ -85,7 +85,7 @@ const CounsellingImpact = () => {
 
             <div className="max-w-[1450px] mx-auto px-4 lg:px-8 relative z-10">
                 <div className="text-center mb-12">
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -94,7 +94,7 @@ const CounsellingImpact = () => {
                     >
                         Our Impact
                     </motion.p>
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -113,9 +113,9 @@ const CounsellingImpact = () => {
             </div>
         </section>
     );
-};
+});
 
-const ImpactCard = ({ impact, index }: { impact: any, index: number }) => (
+const ImpactCard = memo(({ impact, index }: { impact: any, index: number }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -146,6 +146,9 @@ const ImpactCard = ({ impact, index }: { impact: any, index: number }) => (
         {/* Subtle Bottom Line Decor */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-8 h-1 bg-gray-200 rounded-full group-hover:w-16 group-hover:bg-[#da2929] transition-all duration-500" />
     </motion.div>
-);
+));
+
+CounsellingImpact.displayName = "CounsellingImpact";
+ImpactCard.displayName = "ImpactCard";
 
 export default CounsellingImpact;

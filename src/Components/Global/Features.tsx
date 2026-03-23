@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 const services = [
     {
@@ -55,7 +56,44 @@ const services = [
     }
 ];
 
-const Features = () => {
+const ServiceCard = memo(({ service, index }: { service: any, index: number }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        whileHover={{ y: -10 }}
+        className="group relative h-[320px] p-10 rounded-[40px] bg-white border border-gray-200/60 hover:border-[#da2929]/20 hover:shadow-[0_20px_40px_-15px_rgba(218,41,41,0.08)] transition-all duration-500 overflow-hidden w-full shadow-sm"
+    >
+        {/* Large Background Number - SLIGHT RED COLOR */}
+        <span className="absolute -bottom-6 -right-4 text-[120px] font-black text-[#da2929]/[0.05] select-none transition-all duration-500 group-hover:text-[#da2929]/10 group-hover:scale-110">
+            {service.number}
+        </span>
+
+        {/* Icon Wrapper */}
+        <div className="relative mb-8 w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#da2929] group-hover:bg-[#da2929] group-hover:text-white group-hover:scale-110 transition-all duration-500 will-change-transform">
+            <div className="absolute inset-0 bg-[#da2929]/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+                {service.icon}
+            </div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+            <h3 className="text-xl font-black text-gray-900 mb-4 group-hover:text-[#da2929] transition-colors duration-300">
+                {service.title}
+            </h3>
+            <p className="text-gray-500 text-sm leading-relaxed font-medium group-hover:text-gray-600 transition-colors duration-300 line-clamp-3">
+                {service.description}
+            </p>
+        </div>
+
+        {/* Hover Bottom Bar */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-[#da2929] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+    </motion.div>
+));
+
+const Features = memo(() => {
     return (
         <section className="py-12 bg-gray-50 relative overflow-hidden">
             {/* Top Divider Line */}
@@ -110,43 +148,9 @@ const Features = () => {
             </div>
         </section>
     );
-};
+});
 
-const ServiceCard = ({ service, index }: { service: any, index: number }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: index * 0.1 }}
-        whileHover={{ y: -10 }}
-        className="group relative h-[320px] p-10 rounded-[40px] bg-white border border-gray-200/60 hover:border-[#da2929]/20 hover:shadow-[0_20px_40px_-15px_rgba(218,41,41,0.08)] transition-all duration-500 overflow-hidden w-full shadow-sm"
-    >
-        {/* Large Background Number - SLIGHT RED COLOR */}
-        <span className="absolute -bottom-6 -right-4 text-[120px] font-black text-[#da2929]/[0.05] select-none transition-all duration-500 group-hover:text-[#da2929]/10 group-hover:scale-110">
-            {service.number}
-        </span>
-
-        {/* Icon Wrapper */}
-        <div className="relative mb-8 w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-[#da2929] group-hover:bg-[#da2929] group-hover:text-white group-hover:scale-110 transition-all duration-500 will-change-transform">
-            <div className="absolute inset-0 bg-[#da2929]/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-                {service.icon}
-            </div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10">
-            <h3 className="text-xl font-black text-gray-900 mb-4 group-hover:text-[#da2929] transition-colors duration-300">
-                {service.title}
-            </h3>
-            <p className="text-gray-500 text-sm leading-relaxed font-medium group-hover:text-gray-600 transition-colors duration-300 line-clamp-3">
-                {service.description}
-            </p>
-        </div>
-
-        {/* Hover Bottom Bar */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-[#da2929] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-    </motion.div>
-);
+ServiceCard.displayName = "ServiceCard";
+Features.displayName = "Features";
 
 export default Features;

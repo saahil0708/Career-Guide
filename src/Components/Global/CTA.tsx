@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { memo } from "react";
 
-const CTA = () => {
+const CTA = memo(() => {
     return (
         <section className="py-8 pb-32 bg-gray-50 relative overflow-hidden">
             <div className="max-w-[1450px] mx-auto px-4 lg:px-8 relative z-10">
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -20,7 +21,7 @@ const CTA = () => {
                     <div className="absolute top-[-20%] right-[-5%] w-96 h-96 bg-black opacity-[0.1] rounded-full blur-3xl pointer-events-none" />
 
                     <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -29,8 +30,8 @@ const CTA = () => {
                         >
                             Ready to Start Your <span className="text-white/80">Journey?</span>
                         </motion.h2>
-                        
-                        <motion.p 
+
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -40,7 +41,7 @@ const CTA = () => {
                             Whatever your goals, we’re here to help you reach them. Connect with our experts today.
                         </motion.p>
 
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -48,7 +49,7 @@ const CTA = () => {
                             className="flex flex-wrap items-center justify-center gap-6 lg:gap-12"
                         >
                             {/* Email Link */}
-                            <Link 
+                            <Link
                                 href="mailto:career@support.com"
                                 className="group flex items-center gap-3 text-white transition-all duration-300"
                             >
@@ -66,7 +67,7 @@ const CTA = () => {
                             <div className="hidden lg:block h-8 w-px bg-white/20" />
 
                             {/* WhatsApp Link */}
-                            <Link 
+                            <Link
                                 href="https://wa.me/1234567890"
                                 className="group flex items-center gap-3 text-white transition-all duration-300"
                             >
@@ -84,7 +85,7 @@ const CTA = () => {
                             <div className="hidden lg:block h-8 w-px bg-white/20" />
 
                             {/* Appointment Link */}
-                            <Link 
+                            <Link
                                 href="#"
                                 className="group flex items-center gap-3 text-white transition-all duration-300"
                             >
@@ -107,6 +108,8 @@ const CTA = () => {
             </div>
         </section>
     );
-};
+});
+
+CTA.displayName = "CTA";
 
 export default CTA;

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 
 const partners = [
@@ -13,7 +14,7 @@ const partners = [
     "Columbia University"
 ];
 
-const Partners = () => {
+const Partners = memo(() => {
     // Duplicate the partners array to create a seamless loop
     const doubledPartners = [...partners, ...partners];
 
@@ -72,6 +73,8 @@ const Partners = () => {
             </div>
         </section>
     );
-};
+});
+
+Partners.displayName = "Partners";
 
 export default Partners;

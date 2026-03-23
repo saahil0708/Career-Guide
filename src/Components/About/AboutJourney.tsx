@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 
 const milestones = [
   {
@@ -31,7 +31,7 @@ const milestones = [
   },
 ];
 
-const AboutJourney = () => {
+const AboutJourney = memo(() => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -101,9 +101,9 @@ const AboutJourney = () => {
       </div>
     </section>
   );
-};
+});
 
-const MilestoneCard = ({ milestone, index, totalBlades, smoothProgress }: any) => {
+const MilestoneCard = memo(({ milestone, index, totalBlades, smoothProgress }: any) => {
   const centerIndex = (totalBlades - 1) / 2;
   const baseRotation = (index - centerIndex) * 35;
 
@@ -145,6 +145,9 @@ const MilestoneCard = ({ milestone, index, totalBlades, smoothProgress }: any) =
       </div>
     </motion.div>
   );
-};
+});
+
+AboutJourney.displayName = "AboutJourney";
+MilestoneCard.displayName = "MilestoneCard";
 
 export default AboutJourney;

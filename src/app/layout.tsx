@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import ClientProviders from "@/Components/Providers/ClientProviders";
 import Navbar from "@/Components/Global/Navbar";
 import Footer from "@/Components/Global/Footer";
 import SmoothScroll from "@/Components/Providers/SmoothScroll";
-import ReadingProgress from "@/Components/Global/ReadingProgress";
-import CustomCursor from "@/Components/Global/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,9 +37,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${absans.variable} antialiased bg-[#da2929]`}
       >
-        <CustomCursor />
-        <ReadingProgress />
-        <SmoothScroll>
+        <ClientProviders>
+          <SmoothScroll>
           <div className="relative z-10 bg-white mb-[700px] md:mb-[500px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col min-h-screen rounded-b-[60px] md:rounded-b-[90px] overflow-hidden transition-all duration-300">
             <Navbar />
             <main className="flex-grow pt-20 md:pt-[88px]">
@@ -49,6 +47,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </SmoothScroll>
+        </ClientProviders>
       </body>
     </html>
   );

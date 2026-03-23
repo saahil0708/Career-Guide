@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 
-const AboutMission = () => {
+const AboutMission = memo(() => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -106,6 +106,8 @@ const AboutMission = () => {
             </div>
         </section>
     );
-};
+});
+
+AboutMission.displayName = "AboutMission";
 
 export default AboutMission;

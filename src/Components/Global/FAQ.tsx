@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import Image from "next/image";
 
 const faqs = [
@@ -23,12 +23,16 @@ const faqs = [
     }
 ];
 
-const FAQ = () => {
+const FAQ = memo(() => {
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+    const toggleAccordion = useCallback((index: number) => {
+        setActiveIndex(prev => prev === index ? null : index);
+    }, []);
 
     return (
         <section className="py-24 bg-gray-50 relative overflow-hidden">
-            {/* Background Decor */}
+            {/* ... Background Decor */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-50">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-red-50 rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-gray-50 rounded-full blur-[100px]" />
@@ -98,7 +102,7 @@ const FAQ = () => {
                                         }`}
                                 >
                                     <button
-                                        onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                                        onClick={() => toggleAccordion(index)}
                                         className="w-full text-left p-6 lg:p-8 flex items-center justify-between"
                                     >
                                         <span className={`text-lg font-bold transition-colors duration-300 ${activeIndex === index ? "text-gray-900" : "text-gray-600 group-hover:text-gray-900"
@@ -141,6 +145,8 @@ const FAQ = () => {
             </div>
         </section>
     );
-};
+});
+
+FAQ.displayName = "FAQ";
 
 export default FAQ;

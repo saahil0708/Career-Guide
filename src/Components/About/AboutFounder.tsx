@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import Image from "next/image";
 
-const AboutFounder = () => {
+const AboutFounder = memo(() => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -106,6 +106,8 @@ const AboutFounder = () => {
       </div>
     </section>
   );
-};
+});
+
+AboutFounder.displayName = "AboutFounder";
 
 export default AboutFounder;

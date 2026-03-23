@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
+import Image from "next/image";
 
-const StudentsHero = () => {
+const StudentsHero = memo(() => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -68,10 +69,13 @@ const StudentsHero = () => {
                     >
                         <div className="relative w-full aspect-[4/3] flex items-center justify-center">
                             <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] rounded-full border border-gray-100 -z-10" />
-                            <img
+                            <Image
                                 src="/svg/Milestones of business projects-bro.svg"
                                 alt="Business Milestones Illustration"
+                                width={800}
+                                height={600}
                                 className="w-full h-full object-contain relative z-10 drop-shadow-2xl"
+                                priority
                             />
                         </div>
                     </motion.div>
@@ -79,6 +83,8 @@ const StudentsHero = () => {
             </div>
         </section>
     );
-};
+});
+
+StudentsHero.displayName = "StudentsHero";
 
 export default StudentsHero;

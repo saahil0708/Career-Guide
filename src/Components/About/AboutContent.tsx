@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import Image from "next/image";
 
-const AboutContent = () => {
+const AboutContent = memo(() => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -133,6 +133,8 @@ const AboutContent = () => {
             </div>
         </section>
     );
-};
+});
+
+AboutContent.displayName = "AboutContent";
 
 export default AboutContent;

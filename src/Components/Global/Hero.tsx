@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { SplitText } from "./SplitText";
 import Image from "next/image";
+import { memo } from "react";
 
-const Hero = () => {
+const Hero = memo(() => {
   return (
     <section className="relative h-screen flex items-center bg-gray-50 overflow-hidden pt-0 pb-5">
       {/* Background Decoration */}
@@ -94,6 +95,7 @@ const Hero = () => {
               alt="Illustration"
               fill
               className="object-contain drop-shadow-[0_20px_60px_rgba(218,41,41,0.15)]"
+              priority
             />
 
             {/* Interactive Elements Floating around Illustration */}
@@ -120,6 +122,8 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = "Hero";
 
 export default Hero;

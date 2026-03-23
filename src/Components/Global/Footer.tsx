@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 import { motion } from "framer-motion";
 
-const Footer = () => {
+const Footer = memo(() => {
     return (
         <footer className="fixed bottom-0 left-0 w-full min-h-[500px] md:min-h-[500px] py-16 md:py-20 -z-10 bg-[#da2929] text-white flex flex-col items-center justify-center px-4 overflow-hidden">
             {/* Background Decor Elements */}
@@ -78,6 +79,8 @@ const Footer = () => {
             </div>
         </footer>
     );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;

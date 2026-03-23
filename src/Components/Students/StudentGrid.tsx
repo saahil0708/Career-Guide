@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, memo } from "react";
 import StudentDetailsModal from "./StudentDetailsModal";
 
 interface Student {
@@ -15,7 +15,7 @@ interface Student {
     achievements: string[];
 }
 
-const StudentCard = ({ student, index, onClick }: { student: Student; index: number; onClick: () => void }) => {
+const StudentCard = memo(({ student, index, onClick }: { student: Student; index: number; onClick: () => void }) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -83,7 +83,7 @@ const StudentCard = ({ student, index, onClick }: { student: Student; index: num
             </div>
         </motion.div>
     );
-};
+});
 
 const students: Student[] = [
     {
@@ -142,7 +142,7 @@ const students: Student[] = [
     }
 ];
 
-const StudentGrid = () => {
+const StudentGrid = memo(() => {
     const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -173,6 +173,9 @@ const StudentGrid = () => {
             />
         </section>
     );
-};
+});
+
+StudentCard.displayName = "StudentCard";
+StudentGrid.displayName = "StudentGrid";
 
 export default StudentGrid;

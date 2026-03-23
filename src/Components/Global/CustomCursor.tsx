@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, memo } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-const CustomCursor = () => {
+const CustomCursor = memo(() => {
   const [isHovering, setIsHovering] = useState(false);
   const [cursorType, setCursorType] = useState("default");
 
@@ -14,40 +14,39 @@ const CustomCursor = () => {
   const trailX = useSpring(mouseX, springConfig);
   const trailY = useSpring(mouseY, springConfig);
 
+  const moveMouse = useCallback((e: MouseEvent) => {
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
+  }, [mouseX, mouseY]);
+
+  const handleHoverStart = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target) return;
+
+    const interactive = target.closest("button, a, [data-cursor='pointer']");
+    const card = target.closest("[data-cursor='card']");
+
+    if (interactive) {
+      setIsHovering(true);
+      setCursorType("pointer");
+    } else if (card) {
+      setIsHovering(true);
+      setCursorType("card");
+    } else {
+      setIsHovering(false);
+      setCursorType("default");
+    }
+  }, []);
+
   useEffect(() => {
-    const moveMouse = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-
-    const handleHoverStart = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        target.tagName === "BUTTON" ||
-        target.tagName === "A" ||
-        target.closest("button") ||
-        target.closest("a") ||
-        target.closest("[data-cursor='pointer']")
-      ) {
-        setIsHovering(true);
-        setCursorType("pointer");
-      } else if (target.closest("[data-cursor='card']")) {
-        setIsHovering(true);
-        setCursorType("card");
-      } else {
-        setIsHovering(false);
-        setCursorType("default");
-      }
-    };
-
-    window.addEventListener("mousemove", moveMouse);
-    window.addEventListener("mouseover", handleHoverStart);
+    window.addEventListener("mousemove", moveMouse, { passive: true });
+    window.addEventListener("mouseover", handleHoverStart, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", moveMouse);
       window.removeEventListener("mouseover", handleHoverStart);
     };
-  }, [mouseX, mouseY]);
+  }, [moveMouse, handleHoverStart]);
 
   return (
     <>
@@ -80,6 +79,8 @@ const CustomCursor = () => {
       />
     </>
   );
-};
+});
+
+CustomCursor.displayName = "CustomCursor";
 
 export default CustomCursor;

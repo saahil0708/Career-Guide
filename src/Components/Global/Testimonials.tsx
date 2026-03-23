@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, memo, useCallback } from "react";
 
 const testimonials = [
     {
@@ -48,7 +48,7 @@ const testimonials = [
     }
 ];
 
-const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any, color?: string }) => {
+const TestimonialCard = memo(({ testimonial, color = "#da2929" }: { testimonial: any, color?: string }) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -58,7 +58,7 @@ const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any,
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
         const width = rect.width;
         const height = rect.height;
@@ -68,12 +68,12 @@ const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any,
         const yPct = (mouseY / height) - 0.5;
         x.set(xPct);
         y.set(yPct);
-    };
+    }, [x, y]);
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = useCallback(() => {
         x.set(0);
         y.set(0);
-    };
+    }, [x, y]);
 
     return (
         <motion.div
@@ -112,9 +112,9 @@ const TestimonialCard = ({ testimonial, color = "#da2929" }: { testimonial: any,
             <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         </motion.div>
     );
-};
+});
 
-const Testimonials = () => {
+const Testimonials = memo(() => {
     const sectionRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -198,6 +198,9 @@ const Testimonials = () => {
             />
         </section>
     );
-};
+});
+
+TestimonialCard.displayName = "TestimonialCard";
+Testimonials.displayName = "Testimonials";
 
 export default Testimonials;

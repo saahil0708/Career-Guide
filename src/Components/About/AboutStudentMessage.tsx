@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-const AboutStudentMessage = () => {
+const AboutStudentMessage = memo(() => {
     return (
         <section className="py-10 pb-24 bg-gray-50 overflow-hidden font-[family-name:var(--font-absans)] relative">
             {/* Background Decorative Accents */}
@@ -39,6 +40,8 @@ const AboutStudentMessage = () => {
             </div>
         </section>
     );
-};
+});
+
+AboutStudentMessage.displayName = "AboutStudentMessage";
 
 export default AboutStudentMessage;
