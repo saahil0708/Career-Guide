@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ContactModal from "./ContactModal";
+import { useModal } from "@/Components/Providers/ModalContext";
 
 const Navbar = memo(() => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [isContactOpen, setIsContactOpen] = useState(false);
+    const { openContact } = useModal();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -71,7 +71,7 @@ const Navbar = memo(() => {
 
                 <div className="hidden md:flex flex-shrink-0">
                     <button 
-                        onClick={() => setIsContactOpen(true)}
+                        onClick={openContact}
                         className="bg-white text-[#da2929] border-[1px] border-[#da2929] px-7 py-2 rounded-md font-semibold tracking-wide transition-all duration-300 hover:bg-[#000000] hover:text-white hover:shadow-[0_8px_25px_rgba(218,41,41,0.3)] hover:border-none cursor-pointer active:scale-95"
                     >
                         Contact Us
@@ -133,7 +133,7 @@ const Navbar = memo(() => {
                             <button
                                 onClick={() => {
                                     setIsOpen(false);
-                                    setIsContactOpen(true);
+                                    openContact();
                                 }}
                                 className="w-full bg-[#da2929] text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-2xl shadow-red-500/20"
                             >
@@ -143,11 +143,6 @@ const Navbar = memo(() => {
                     </motion.div>
                 )}
             </AnimatePresence>
-
-            <ContactModal 
-                isOpen={isContactOpen} 
-                onClose={() => setIsContactOpen(false)} 
-            />
         </nav>
     );
 });
